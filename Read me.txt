@@ -1,0 +1,41 @@
+1. Create automaton task:
+	- The size of each state rely on three button on the left side with three different sizes (normal size is default size)
+	- Menu File:
+		. New: create new frame
+		. Close: close the current frame
+		. Save: choose location and name to save Automaton to XML file (auto has extention type if user forgot)
+		. Open: user choose XML file to open then the automaton is displayed
+		. Quit: quit the program
+	- Menu Automaton: set up a complete automaton and  check a string by the automaton was created
+		. Set Initial state: choose this menu item then click to a state to set up Initial state which has an incoming arrow
+		. Set Terminal state: choose this menu item then click to a state to set up Terminal state which has a circle outside
+		. Set Normal state: choose this menu item then click to a state to set up a Initial or Terminal state back to normal state
+		. Check String: an input popup is displayed, it has regular expression accept only word from a - Z
+	- To avoid many Transitions between 2 States overlap to each other: program automatic create at least 1 join point.
+	- Because a transition consist at least 1 join point, therefore the user will be confirmed delete the last join point is delete the transition.
+	- A transition create default 2 join point from a state to itself if the user did not create any join point
+	
+2. Save file XML task:
+	The saved file has the following format:
+<Automaton>
+	<State initial="true" size="50.0" terminal="false" x="88.0" y="89.0">0</State>
+	<State initial="false" size="50.0" terminal="true" x="361.0" y="91.0">1</State>
+	<Color>1</Color>
+	<Color>0</Color>
+	<Color>3</Color>
+	<Transition label="a" souce="0" target="1">
+		<JoinPoint x="229.0" y="95.0"/>
+		<JoinPoint x="112.0" y="89.0"/>
+	</Transition>
+</Automaton>
+
+3. Visualize the acknowledgment task:
+	- The path from initial state is in Red colour to present the input string to check automaton
+	- Message box show up to the user that the word is accepted or not by the automaton
+	- The text area to show history of input string 
+
+The project also has
+	- Robustness : protection against user's error during the execution
+		. The program has 4 exceptions to catch if there are more than 1 initial state, if automaton is NFA, if there is no transition, and if there is no initial state
+		. Regurlar expression to check when user add label for transition and for string to check automaton.
+	- MVC model
